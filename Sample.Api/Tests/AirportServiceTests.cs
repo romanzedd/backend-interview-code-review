@@ -31,7 +31,7 @@ namespace Sample.Api.Tests {
 
 		[Test]
 		public async Task WillReturnNullOnIncorrectRequest() {
-			var service = new AirportService("https://example.org");
+			var service = new AirportService("https://example.org"); //Do we need it anymore?
 			
 			var airports = await _service.GetAirport("Moscow");
 

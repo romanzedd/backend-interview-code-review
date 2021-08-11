@@ -17,9 +17,10 @@ namespace Sample.Api.App
 
 		public List<AirportPair> CalculateDistance(List<Airport> airports)
 		{
-			List<AirportPair> pairs = new List<AirportPair>();
-			Queue<Airport> queue = new Queue<Airport>(airports);
+			List<AirportPair> pairs = new List<AirportPair>(); // No need for implicit declaration for pairs and queue, use var
+			Queue<Airport> queue = new Queue<Airport>(airports); // Variables names should make more sense, could've named them airportPairs and airportsQueue f.e.
 			Airport currentPort;
+			// Let's be consistend with curly brackets and have opening bracket on a new line.
 			while (queue.TryDequeue(out currentPort)) {
 				foreach (Airport airport in queue) {
 					if (!currentPort.City.Equals(airport.City)) {
@@ -48,6 +49,7 @@ namespace Sample.Api.App
 			return ports;
 		}
 
+// If you're not using this commented code, it is better to remove it.
 //		public async Task<Airport[]> GetAirports(string[] cities)
 //		{
 //			string url = "Airport/search";
@@ -74,7 +76,11 @@ namespace Sample.Api.App
 		{
 			string url = "Airport/search";
 			Uri requestUri = new Uri(ApiHost + $"/Airport/search?pattern={city}");
-			try {
+			// Did you mean to use url variable here?
+			// var url = "/Airport/search";
+			// var requestUri = new Uri(ApiHost + url + $"?pattern={city}");
+			try
+			{
 				var response = await GetAsync(requestUri);
 
 				Airport[] result = null;
@@ -89,6 +95,7 @@ namespace Sample.Api.App
 				throw ex;
 			}
 
+			// This part of the code will never be reached, consider deleting it.
 			return null;
 		}
 

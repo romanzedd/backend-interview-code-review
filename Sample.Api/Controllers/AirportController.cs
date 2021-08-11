@@ -25,7 +25,7 @@ namespace Sample.Api.Controllers
 				var list = s.GetAirports(arr).Result;
 				if (list.Count == 0) {
 					return Ok("There are no airports found for cities");
-				} else {
+				} else {													// Should better start with a new line after closing curly bracket.
 					List<AirportPair> pairs = s.CalculateDistance(list);
 					List<AirportPair> shortest = new List<AirportPair>();
 					foreach (AirportPair ap in pairs) {
